@@ -96,8 +96,18 @@ public class Breakout extends GraphicsProgram {
      */
     private void setupGame() {
         setupBricks();
-        //setupPaddle();
+        setupPaddle();
         //setupBall();
+    }
+
+    /**
+     * create the paddle of the brick
+     */
+    private void setupPaddle() {
+        paddle = new GRect(PADDLE_WIDTH, PADDLE_HEIGHT);
+        paddle.setFilled(true);
+        add(paddle, (getWidth() - PADDLE_WIDTH) / 2,
+                getHeight() - PADDLE_Y_OFFSET);
     }
 
     /**
@@ -138,4 +148,6 @@ public class Breakout extends GraphicsProgram {
         }
     }
 
+    /** private instance variables */
+    private GRect paddle;
 }
