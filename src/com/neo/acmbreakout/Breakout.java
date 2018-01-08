@@ -96,7 +96,18 @@ public class Breakout extends GraphicsProgram {
     private void setupGame() {
         setupBricks();
         setupPaddle();
-        //setupBall();
+        setupBall();
+    }
+
+    /**
+     * create the ball for the game
+     */
+    private void setupBall() {
+        ball = new GOval(BALL_RADIUS * 2, BALL_RADIUS * 2);
+        ball.setFilled(true);
+        ball.setFillColor(Color.BLUE);
+        add(ball, (getWidth() - (BALL_RADIUS * 2)) / 2,
+                (getHeight() - (BALL_RADIUS * 2)) / 2);
     }
 
 
@@ -153,4 +164,5 @@ public class Breakout extends GraphicsProgram {
      * private instance variables
      */
     private GRect paddle;
+    private GOval ball;
 }
