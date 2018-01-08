@@ -1,11 +1,10 @@
-package com.neo.acmbreakout;/*
+/*
  * File: Breakout.java
  * -------------------
- * Name:
- * Section Leader:
- *
  * This file will eventually implement the game of Breakout.
  */
+
+package com.neo.acmbreakout;
 
 import acm.graphics.*;
 import acm.program.*;
@@ -84,7 +83,7 @@ public class Breakout extends GraphicsProgram {
     /* Method: run() */
 
     /**
-     * Runs the Breakout program.
+     * Runs the Breakout program
      */
     public void run() {
         setupGame();
@@ -100,6 +99,7 @@ public class Breakout extends GraphicsProgram {
         //setupBall();
     }
 
+
     /**
      * create the paddle of the brick
      */
@@ -114,14 +114,15 @@ public class Breakout extends GraphicsProgram {
      * setup the bricks for the game
      */
     private void setupBricks() {
-        for (int i = 0; i < NBRICK_ROWS; i++){
-            double yPosition = i * (BRICK_HEIGHT + (BRICK_SEP / 2)) +  BRICK_Y_OFFSET;
+        for (int i = 0; i < NBRICK_ROWS; i++) {
+            double yPosition = i * (BRICK_HEIGHT + (BRICK_SEP / 2)) + BRICK_Y_OFFSET;
             createBrickRow(i, yPosition);
         }
     }
 
     /**
      * create a row of bricks
+     *
      * @param rowNumber the current brick row
      * @param yPosition the current y offset
      */
@@ -143,11 +144,13 @@ public class Breakout extends GraphicsProgram {
 
             //  update the xposition of the brick with brick seperation
             //  and brick width
-            double xPosition = j * (BRICK_WIDTH + (BRICK_SEP * 0.9)) +  BRICK_SEP;
+            double xPosition = j * (BRICK_WIDTH + (BRICK_SEP * 0.9)) + BRICK_SEP;
             add(brick, xPosition, yPosition);
         }
     }
 
-    /** private instance variables */
+    /**
+     * private instance variables
+     */
     private GRect paddle;
 }
