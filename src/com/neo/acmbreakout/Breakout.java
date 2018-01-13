@@ -161,6 +161,18 @@ public class Breakout extends GraphicsProgram {
         }
     }
 
+    /** moving the mouse controls the paddle on the screen
+     *  please note the mouse can only move if it is
+     *  within the game screen  */
+    public void mouseDragged(MouseEvent e) {
+        if (paddle != null) {
+            if (e.getX() >= 0 && (e.getX() <= (getWidth() - PADDLE_WIDTH))) {
+                double paddleLastLocation = paddle.getX();
+                paddle.move(e.getX() - paddleLastLocation, 0);
+            }
+        }
+    }
+
     /**
      * private instance variables
      */
