@@ -181,6 +181,7 @@ public class Breakout extends GraphicsProgram {
      */
     private GRect paddle;
     private GOval ball;
-    private double vx, vy; //   the ball velocity
+    private double vx = 0;  //   the ball's initial x velocity
+    private double vy = 0;  //   the ball's initial y velocity
     private RandomGenerator rgen = RandomGenerator.getInstance();
 }
