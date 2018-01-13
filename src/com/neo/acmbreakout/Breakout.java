@@ -80,6 +80,9 @@ public class Breakout extends GraphicsProgram {
      */
     private static final int NTURNS = 3;
 
+    /** the animation delay */
+    private static final int DELAY = 50;
+
     /* Method: run() */
 
     /**
