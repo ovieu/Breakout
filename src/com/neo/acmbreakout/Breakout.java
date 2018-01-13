@@ -110,10 +110,8 @@ public class Breakout extends GraphicsProgram {
     private void checkForCollision() {
         checkWallCollision();
 
-
-
-
     }
+
 
     /** change the direction of the ball if it collides with
      *  any part of the wall
@@ -235,12 +233,10 @@ public class Breakout extends GraphicsProgram {
     /** moving the mouse controls the paddle on the screen
      *  please note the mouse can only move if it is
      *  within the game screen  */
-    public void mouseDragged(MouseEvent e) {
-        if (paddle != null) {
-            if (e.getX() >= 0 && (e.getX() <= (getWidth() - PADDLE_WIDTH))) {
-                double paddleLastLocation = paddle.getX();
-                paddle.move(e.getX() - paddleLastLocation, 0);
-            }
+    public void mouseMoved(MouseEvent e) {
+        if (e.getX() >= 0 && (e.getX() <= (getWidth() - PADDLE_WIDTH))) {
+            double paddleLastLocation = paddle.getX();
+            paddle.move(e.getX() - paddleLastLocation, 0);
         }
     }
 
