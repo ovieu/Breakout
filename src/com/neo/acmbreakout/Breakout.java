@@ -81,7 +81,7 @@ public class Breakout extends GraphicsProgram {
     private static final int NTURNS = 3;
 
     /** the animation delay */
-    private static final int DELAY = 50;
+    private static final int DELAY = 15;
 
     /* Method: run() */
 
@@ -94,6 +94,26 @@ public class Breakout extends GraphicsProgram {
             moveBall();
             pause(DELAY);
         }
+    }
+
+    /** moves the ball across the game
+     *  changes the direction of the ball if it
+     *  collides with the wall of the game
+     */
+    private void moveBall() {
+        if (newGame()) {
+            vy = 3.0;
+            vx = rgen.nextDouble(1.0, 3.0);
+            //  the initial velocity of the ball should have a 50/50
+            //  chance of being positive or negative
+            if (rgen.nextBoolean(0.5)) vx = - vx;
+        }
+
+        ball.move(vx, vy);
+    }
+
+    private boolean newGame() {
+        return (vy == 0 && vy == 0);
     }
 
     /**
