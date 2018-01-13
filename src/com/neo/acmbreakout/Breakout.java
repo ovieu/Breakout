@@ -90,6 +90,10 @@ public class Breakout extends GraphicsProgram {
      */
     public void run() {
         setupGame();
+        while(true) {
+            moveBall();
+            pause(DELAY);
+        }
     }
 
     /**
