@@ -178,4 +178,5 @@ public class Breakout extends GraphicsProgram {
      */
     private GRect paddle;
     private GOval ball;
+    private double vx, vy; //   the ball velocity
 }
