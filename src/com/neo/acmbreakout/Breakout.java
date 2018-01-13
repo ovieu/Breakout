@@ -71,6 +71,11 @@ public class Breakout extends GraphicsProgram {
     private static final int BALL_RADIUS = 10;
 
     /**
+     * Radius of the ball in pixels
+     */
+    private static final int BALL_DIAMETER = BALL_RADIUS * 2;
+
+    /**
      * Offset of the top brick row from the top
      */
     private static final int BRICK_Y_OFFSET = 70;
@@ -81,7 +86,7 @@ public class Breakout extends GraphicsProgram {
     private static final int NTURNS = 3;
 
     /** the animation delay */
-    private static final int DELAY = 15;
+    private static final int DELAY = 13;
 
     /* Method: run() */
 
@@ -92,7 +97,46 @@ public class Breakout extends GraphicsProgram {
         setupGame();
         while(true) {
             moveBall();
+            checkForCollision();
             pause(DELAY);
+        }
+    }
+
+    /** checks if the ball collides with environment
+     *  count down life if ball collides with floor
+     *  increment score if collide with bricks
+     *  change direction if bounce off the wall and paddle
+     */
+    private void checkForCollision() {
+        checkWallCollision();
+
+
+
+
+    }
+
+    /** change the direction of the ball if it collides with
+     *  any part of the wall
+     */
+    private void checkWallCollision() {
+        //  change direction if ball collide with right wall
+        if (ball.getX() >= (getWidth() - BALL_DIAMETER)) {
+            vx = - vx;
+        }
+
+        //  change direction if ball collide with left wall
+        if (ball.getX() <= BALL_DIAMETER) {
+            vx = - vx;
+        }
+
+        //  change direction if ball collide with floor
+        if (ball.getY() >= (getHeight() - BALL_DIAMETER)) {
+            vy = - vy;
+        }
+
+        //  change direction if ball collide with roof
+        if (ball.getY() <= BALL_DIAMETER) {
+            vy = - vy;
         }
     }
 
