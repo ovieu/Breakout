@@ -100,6 +100,15 @@ public class Breakout extends GraphicsProgram {
             checkForCollision();
             pause(DELAY);
         }
+        displayEndGameMsg();
+    }
+
+    /** display end game message and disable key listerners*/
+    private void displayEndGameMsg() {
+        GLabel endGame = new GLabel("Game Over");
+        endGame.setFont("TimesRoman-46");
+        add(endGame, ((getWidth() - endGame.getWidth()) / 2),
+                (getHeight() - endGame.getAscent()) / 2);
     }
 
     /** checks the various conditions to test if the
@@ -107,7 +116,7 @@ public class Breakout extends GraphicsProgram {
      * @return true if game is over
      */
     private boolean gameOver() {
-        if (ballHitsBottom()) {
+        if (ballHitsBottom() || brickCount == 0) {
             return true;
         } return false;
     }
@@ -135,6 +144,7 @@ public class Breakout extends GraphicsProgram {
         if (collider != null) {
             if (collider != paddle) {
                 remove(collider);
+                brickCount--;
             }
         }
     }
@@ -300,4 +310,5 @@ public class Breakout extends GraphicsProgram {
     private String filePath = "/home/neo/Documents/Breakout/";
     private String audioFile = filePath + "bounce.au";
     AudioClip bounceClip = MediaTools.loadAudioClip(audioFile);
+    private int brickCount = 100;
 }
