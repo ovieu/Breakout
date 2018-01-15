@@ -95,11 +95,25 @@ public class Breakout extends GraphicsProgram {
      */
     public void run() {
         setupGame();
-        while(true) {
+        while(!gameOver()) {
             moveBall();
             checkForCollision();
             pause(DELAY);
         }
+    }
+
+    /** checks the various conditions to test if the
+     *  game is over
+     * @return true if game is over
+     */
+    private boolean gameOver() {
+        if (ballHitsBottom()) {
+            return true;
+        } return false;
+    }
+
+    private boolean ballHitsBottom() {
+        return (ball.getY() >= (getHeight() - BALL_DIAMETER));
     }
 
     /** checks if the ball collides with environment
