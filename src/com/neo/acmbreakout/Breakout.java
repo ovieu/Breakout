@@ -10,7 +10,6 @@ import acm.graphics.*;
 import acm.program.*;
 import acm.util.*;
 
-import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -109,7 +108,39 @@ public class Breakout extends GraphicsProgram {
      */
     private void checkForCollision() {
         checkWallCollision();
+        checkBrickPaddleCollision();
+    }
 
+    /** if the ball collides with a brick, remove the brick
+     *  -accomplishes this by assuming the ball is a rectangle
+     *  and checks the four corner of the rectangle
+     *  */
+    private void checkBrickPaddleCollision() {
+        GObject collider = getCollidingObject();
+        if (collider != null) {
+            if (collider != paddle) {
+                remove(collider);
+            }
+        }
+    }
+
+    /** checks if the object collides with a brick
+     *  checks the four corners of the ball */
+    private GObject getCollidingObject() {
+        if (getElementAt(ball.getX(), ball.getY()) != null) {
+            vy = - vy;
+            return getElementAt(ball.getX(), ball.getY());
+        } else if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY()) != null) {
+            vy = - vy;
+            return getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
+        } else if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
+            vy = - vy;
+            return getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
+        } else if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
+            vy = - vy;
+            return getElementAt(ball.getX() + BALL_DIAMETER, ball.getY() + BALL_DIAMETER);
+        }
+        return null;
     }
 
 
