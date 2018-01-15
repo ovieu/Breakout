@@ -10,6 +10,7 @@ import acm.graphics.*;
 import acm.program.*;
 import acm.util.*;
 
+import java.applet.AudioClip;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -129,12 +130,15 @@ public class Breakout extends GraphicsProgram {
     private GObject getCollidingObject() {
         if (getElementAt(ball.getX(), ball.getY()) != null) {
             vy = - vy;
+            bounceClip.play();
             return getElementAt(ball.getX(), ball.getY());
         } else if (getElementAt(ball.getX() + BALL_DIAMETER, ball.getY()) != null) {
             vy = - vy;
+            bounceClip.play();
             return getElementAt(ball.getX() + BALL_DIAMETER, ball.getY());
         } else if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
             vy = - vy;
+            bounceClip.play();
             return getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER);
         } else if (getElementAt(ball.getX(), ball.getY() + BALL_DIAMETER) != null) {
             vy = - vy;
@@ -279,4 +283,7 @@ public class Breakout extends GraphicsProgram {
     private double vx = 0;  //   the ball's initial x velocity
     private double vy = 0;  //   the ball's initial y velocity
     private RandomGenerator rgen = RandomGenerator.getInstance();
+    private String filePath = "/home/neo/Documents/Breakout/";
+    private String audioFile = filePath + "bounce.au";
+    AudioClip bounceClip = MediaTools.loadAudioClip(audioFile);
 }
